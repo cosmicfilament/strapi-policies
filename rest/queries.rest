@@ -1,0 +1,91 @@
+### Create User
+POST http://localhost:1337/auth/local/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "Homer Simpson",
+    "email": "hsimpson@springfield.com",
+    "password": "admin123"
+}
+
+### Log in
+POST http://localhost:1337/auth/local HTTP/1.1
+content-type: application/json
+
+{
+    "identifier": "Homer Simpson",
+    "password": "admin123"
+}
+
+### Log in email sender acct
+POST http://localhost:1337/auth/local HTTP/1.1
+content-type: application/json
+
+{
+    "identifier": "jpbutler",
+    "password": "admin123"
+}
+
+### Get logged in user
+GET http://localhost:1337/users/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkxMzAyMDkyLCJleHAiOjE1OTM4OTQwOTJ9.P6dyZjdBFxm88r-Y3jXqhKARhPn8sv1-g-YFBG48HPo
+
+### get articles
+GET http://localhost:1337/articles
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkxMzAyMDkyLCJleHAiOjE1OTM4OTQwOTJ9.P6dyZjdBFxm88r-Y3jXqhKARhPn8sv1-g-YFBG48HPo
+
+### Get for an endpoint that is blocked
+GET http://localhost:1337/articles/count
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkxMzAyMDkyLCJleHAiOjE1OTM4OTQwOTJ9.P6dyZjdBFxm88r-Y3jXqhKARhPn8sv1-g-YFBG48HPo
+
+###
+GET http://localhost:1337/orders?user=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkxMzAyMDkyLCJleHAiOjE1OTM4OTQwOTJ9.P6dyZjdBFxm88r-Y3jXqhKARhPn8sv1-g-YFBG48HPo
+
+###
+GET http://localhost:1337/articles?title_contains=puke
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkxMzAyMDkyLCJleHAiOjE1OTM4OTQwOTJ9.P6dyZjdBFxm88r-Y3jXqhKARhPn8sv1-g-YFBG48HPo
+
+###
+GET http://localhost:1337/orders?user=1&price_gt=45
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkxMzAyMDkyLCJleHAiOjE1OTM4OTQwOTJ9.P6dyZjdBFxm88r-Y3jXqhKARhPn8sv1-g-YFBG48HPo
+
+### get uploaded files
+GET http://localhost:1337/upload/files
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkxMzAyMDkyLCJleHAiOjE1OTM4OTQwOTJ9.P6dyZjdBFxm88r-Y3jXqhKARhPn8sv1-g-YFBG48HPo
+
+### Create a book
+POST http://localhost:1337/books HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkxMzAyMDkyLCJleHAiOjE1OTM4OTQwOTJ9.P6dyZjdBFxm88r-Y3jXqhKARhPn8sv1-g-YFBG48HPo
+
+{
+   "title": "How to fart like a pro."
+}
+
+### Upload a picture
+POST http://localhost:1337/upload HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkxMzAyMDkyLCJleHAiOjE1OTM4OTQwOTJ9.P6dyZjdBFxm88r-Y3jXqhKARhPn8sv1-g-YFBG48HPo
+
+files=swallow.jpg
+ref=book
+refId=1
+field=picture
+
+###
+
+### Send an email
+POST http://localhost:1337/email-send HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkxMzAyMDkyLCJleHAiOjE1OTM4OTQwOTJ9.P6dyZjdBFxm88r-Y3jXqhKARhPn8sv1-g-YFBG48HPo
+
+{
+    "from": "john@thecosmicfilament.com",
+    "to": "john@thecosmicfilament.com",
+    "subject": " Sending an email using a post command",
+    "text": "What the world needs now is another religion like I need a hole in my head.",
+    "html": "<p>What the world needs now is another religion</p><p>like I need a hole in my head</p>"
+}
+
+###
+
